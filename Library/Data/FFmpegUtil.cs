@@ -16,12 +16,28 @@ public class FFmpegUtil
 
     protected FFmpegUtil()
     {
-        string ffmpeg_directory = Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Krympe", "ffmpeg")).FullName;
-        if (!Directory.GetFiles(ffmpeg_directory, "*ffmpeg*", SearchOption.TopDirectoryOnly).Any())
+        log.Warn("Downloading FFMPEG...");
+        if (!Directory.GetFiles(FFmpegDirectory, "*ffmpeg*", SearchOption.AllDirectories).Any())
         {
-            FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official);
+            try
+            {
+                FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, FFmpegDirectory).Wait();
+            }
+            catch (Exception e)
+            {
+                log.Fatal($"Unable to download FFMPEG: {e.Message}", e.StackTrace);
+                Environment.Exit(1);
+            }
         }
-        ffmpeg_exe = Directory.GetFiles(ffmpeg_directory, "*ffmpeg*", SearchOption.TopDirectoryOnly).First();
+        try
+        {
+            ffmpeg_exe = Directory.GetFiles(FFmpegDirectory, "*ffmpeg*", SearchOption.AllDirectories).First();
+        }
+        catch (Exception e)
+        {
+            log.Fatal($"Unable to initialize FFMPEG: {e.Message}", e.StackTrace);
+            Environment.Exit(1);
+        }
     }
 
     #endregion Protected Constructors
@@ -35,7 +51,8 @@ public class FFmpegUtil
             StartInfo = new()
             {
                 FileName = ffmpeg_exe,
-                Arguments = $"-y -i \"{inputFile}\" {arguments} \"{outputFile}\""
+                Arguments = arguments.Replace("{INPUT}", $"\"{inputFile}\"").Replace("{OUTPUT}", $"\"{outputFile}\"").Replace("ffmpeg", "").Trim(),
+                UseShellExecute = true,
             }
         };
     }
