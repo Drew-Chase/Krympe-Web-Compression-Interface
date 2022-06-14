@@ -1,0 +1,8 @@
+#current-version {
+    font-weight: 900;
+}
+
+#current-version #current-version-value {
+    font-weight: 400;
+    opacity: .7;
+}

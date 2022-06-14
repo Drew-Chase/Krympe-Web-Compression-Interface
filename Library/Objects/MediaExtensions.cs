@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace Krympe.Library.Objects
 {
@@ -19,11 +20,33 @@ namespace Krympe.Library.Objects
 
         #endregion Protected Constructors
 
+        #region Properties
+
+        public JArray AsJson
+        {
+            get
+            {
+                return new JArray(ext);
+            }
+        }
+
+        #endregion Properties
+
         #region Public Methods
 
-        public static MediaExtensions Make(string extList)
+        public static MediaExtensions Make(JArray extList)
         {
-            return new(extList.Split(";").ToList());
+            List<string> ext = new();
+            foreach (var item in extList)
+            {
+                ext.Add(item.ToString());
+            }
+            return new(ext);
+        }
+
+        public static MediaExtensions Make(string[] extList)
+        {
+            return new(extList.ToList());
         }
 
         public void Add(string extension)
@@ -38,20 +61,7 @@ namespace Krympe.Library.Objects
 
         public override string ToString()
         {
-            StringBuilder builder = new();
-            foreach (string s in ext)
-            {
-                builder.Append(s);
-            }
-            for (int i = 0; i < ext.Count; i++)
-            {
-                builder.Append(ext[i]);
-                if (i < ext.Count - 1)
-                {
-                    builder.Append(";");
-                }
-            }
-            return builder.ToString().Trim();
+            return AsJson.ToString();
         }
 
         #endregion Public Methods

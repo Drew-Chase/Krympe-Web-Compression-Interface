@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/assets/css/compression.css">
+<section id="ffmpeg-section">
+    <div class="section-head">
+        <p class="section-title">FFmpeg</p>
+    </div>
+    <div class="input-field" id="command-view">
+        <p class="name">Command</p>
+        <input readonly type="text" id="ffmpeg-command" setting="ffmpeg">
+    </div>
+    <div class="list">
+        <div class="toggle-field" id="overwrite-exisitng-toggle" setting="overwrite">
+            <p class="name">Overwrite Existing</p>
+            <span class="toggle"></span>
+        </div>
+        <div class="input-field">
+            <p class="name">Concurrent Processes</p>
+            <input type="number" id="concurrent-processes" setting="concurrent_processes">
+        </div>
+        <div class="input-field">
+            <p class="name info-bubble">Hardware Acceleration</p>
+            <input type="text" id="hardware-accel" value="auto" pre-cmd-arg="-hwaccel">
+        </div>
+        <div class="input-field">
+            <p class="name">Video Bitrate</p>
+            <input type="number" id="video-bitrate" value="0" cmd-arg="-b:v">
+        </div>
+        <div class="input-field">
+            <p class="name">Video Codec</p>
+            <input type="text" id="video-bitrate" value="h264" cmd-arg="-c:v">
+        </div>
+        <div class="input-field">
+            <p class="name">Audio Bitrate</p>
+            <input type="number" id="video-bitrate" value="0" cmd-arg="-b:a">
+        </div>
+        <div class="input-field">
+            <p class="name">Audio Codec</p>
+            <input type="text" id="video-bitrate" value="aac" cmd-arg="-c:a">
+        </div>
+    </div>
+</section>
+
+<script src="/assets/js/elements.js"></script>
+<script src="/assets/js/compression.js"></script>

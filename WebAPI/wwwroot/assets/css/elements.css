@@ -1,0 +1,245 @@
+.btn {
+    display: flex;
+    border-radius: 4px;
+    background-color: var(--primary);
+    transition: filter 200ms;
+    min-height: 2rem;
+    min-width: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    font-size: 1rem;
+}
+
+
+    .btn:hover {
+        cursor: pointer;
+        filter: brightness(.9);
+    }
+
+.sm {
+    min-width: 2rem;
+    width: 15%;
+    padding: .5rem;
+}
+
+.md {
+    min-width: 4rem;
+    width: 33%;
+    padding: 1rem;
+}
+
+.lg {
+    min-width: 8rem;
+    width: 50%;
+    padding: 1.5rem;
+}
+
+
+/* Inputs */
+.input-field {
+    display: flex;
+    position: relative;
+    background-color: black;
+    border: none;
+    border-radius: 4px;
+    height: 3rem;
+    width: 100%;
+    align-items: center;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+input {
+    position: relative;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    color: white;
+    margin-left: 1rem;
+}
+
+    input::placeholder {
+        color: rgba(255, 255, 255, .5);
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+.input-field > *:not(input) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 5rem;
+    max-width: 5rem;
+    border-radius: 10px;
+    margin: 0;
+    height: 100%;
+    padding: 1rem;
+    background-color: var(--primary);
+}
+
+.input-field > .btn {
+    min-width: 1rem;
+    aspect-ratio: 1/1;
+}
+
+/* Toggle */
+.toggle-field {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    margin: 2rem 0;
+    cursor: pointer;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+}
+
+    .toggle-field p {
+        width: 100%;
+    }
+
+    .toggle-field .toggle {
+        position: relative;
+        border-radius: 10px;
+        background-color: black;
+        width: 8rem;
+        height: 100%;
+        overflow: hidden;
+    }
+
+        .toggle-field .toggle::after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 50%;
+            height: 100%;
+            background-color: var(--primary);
+            left: 0;
+            transition: left 500ms;
+        }
+
+    .toggle-field[value="true"] .toggle::after {
+        left: 50%;
+    }
+
+/* Progress */
+.progress {
+    position: relative;
+    background-color: black;
+    width: 100%;
+    height: .5rem;
+    border-radius: 180px;
+}
+
+    .progress .handle {
+        position: absolute;
+        z-index: 1;
+        background-color: var(--primary);
+        width: 50%;
+        height: 100%;
+        border-radius: 180px;
+    }
+
+/* File Item */
+.file-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.detail-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.file-item .name,
+.file-item .details {
+    width: 100%;
+}
+
+.file-item .details {
+    text-align: end;
+}
+
+/* Folder Item */
+
+.folder-item {
+    max-height: 4rem;
+    overflow: hidden;
+    padding: 0px 2rem;
+    background-color: transparent;
+    transition: background-color 500ms;
+}
+
+    .folder-item .btn {
+        transition: background-color 500ms;
+    }
+
+    .folder-item:hover {
+        cursor: pointer;
+        background-color: var(--primary);
+        border-radius: 5px;
+    }
+
+        .folder-item:hover .btn {
+            background-color: black;
+        }
+
+    .folder-item .detail-section .name {
+        width: 100%;
+    }
+
+    .folder-item .detail-section .details {
+        width: 100%;
+        text-align: end;
+    }
+
+    .folder-item > .sub-folders > * {
+        position: relative;
+        margin-left: 1.5rem;
+    }
+
+    .folder-item.expanded {
+        max-height: 100%;
+    }
+
+.info-bubble {
+    position: relative;
+}
+
+    .info-bubble::after {
+        content: 'i';
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 5px;
+        top: calc(1rem + 5px);
+        border-radius: 180px;
+        background-color: white;
+        color: var(--primary);
+        width: 1rem;
+        font-weight: 900;
+        aspect-ratio: 1/1;
+        font-size: .7rem;
+        cursor: pointer;
+    }

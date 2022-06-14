@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url("../lib/fontawesome/css/all.css");
+@import url("nav.css");
+@import url("scrollbar.css");
+@import url("elements.css");
+
+:root {
+    font-family: 'Roboto';
+    --primary: #e33f3f;
+    --background: #1b1b1b;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    overflow: overlay;
+    background-color: var(--background);
+    color: white;
+    overflow: hidden;
+}
+
+main {
+    position: relative;
+    height: calc(100vh - 135px);
+    max-height: calc(100vh - 135px);
+    margin: 120px 15px 50vh 15px;
+    overflow: auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    min-width: 500px;
+    max-width: 900px;
+    margin: auto;
+}
+
+    .form .form-header {
+        font-size: 3rem;
+    }
+
+section {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin: 0;
+    width: 100%;
+}
+
+.section-head {
+    display: flex;
+    width: 100%;
+    border-bottom: 4px solid rgba(255, 255, 255, .19);
+    margin: 1rem 0;
+    align-items: center;
+}
+
+    .section-head > *:not(.btn) {
+        display: flex;
+        width: 100%;
+    }
+
+    .section-head > *:not(.section-title):not(.btn) {
+        justify-content: end;
+    }
+
+.list {
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: auto;
+    min-height: 10rem;
+    max-height: 50vh;
+    padding-right: 1rem;
+}
