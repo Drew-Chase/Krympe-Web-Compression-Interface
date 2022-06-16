@@ -88,3 +88,54 @@ section {
     max-height: 50vh;
     padding-right: 1rem;
 }
+
+.loading {
+    border-right: 2px solid white;
+    height: 75%;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    animation-name: loading;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-duration: 700ms;
+}
+
+
+@keyframes loading {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    50% {
+        transform: rotateZ(180deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+
+#loading-page {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 99999;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background);
+    justify-content: center;
+    align-items: center;
+}
+
+    #loading-page .loading {
+        margin: 2rem 0;
+        height: 20%;
+    }
