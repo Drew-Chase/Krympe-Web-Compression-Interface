@@ -56,7 +56,7 @@ public class DriveUtil
     {
         if (!File.Exists(file))
         {
-            RefreshCachedDrives();
+            RefreshCachedDrives().Wait();
             return;
         }
         try
@@ -92,7 +92,7 @@ public class DriveUtil
             log.Error($"Unable to load Cached Drive Information: {e.Message}");
         }
         if (!_drives.Any())
-            RefreshCachedDrives();
+            RefreshCachedDrives().Wait();
     }
 
     public Task RefreshCachedDrives()
