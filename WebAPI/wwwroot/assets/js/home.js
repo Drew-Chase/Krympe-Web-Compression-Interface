@@ -2,6 +2,11 @@
     $("#refresh-watched-directories").on('click', () => {
         PopulateWatchDirectories();
     })
+    $("#cancel-all-active-processes").on('click', async () => {
+        await fetch(`/api/process/stop`);
+        PopulateActiveProcesses();
+        PopulateWatchDirectories();
+    })
 
     var updateInteraval = setInterval(() => {
         UpdateActiveProcesses()
@@ -15,11 +20,10 @@
         let list = section.querySelector(".list");
         list.innerHTML = ""
         let response = await fetch(`/api/process/active`, { method: "GET" });
-        let json = (await response.json())["active"];
-        for (let i = 0; i < json.length; i++) {
-            let folder = json[i];
-            list.append(makeFileItem(folder["name"], `${folder["currentSize"]} / ${folder["totalSize"]} ${folder["percentage"]}%`))
-        }
+        let json = await response.json();
+        Array.from(json["processes"]).forEach(folder => {
+            list.append(makeFileItem(folder["name"], `${folder["currentSize"]} / ${folder["totalSize"]} - ${folder["percentage"]}%`))
+        })
         if (json.length != 0) {
             updateInteraval = setInterval(() => {
                 UpdateActiveProcesses()
@@ -28,11 +32,12 @@
     }
 
     async function UpdateActiveProcesses() {
-        let response = await fetch(`/api/process/active`, { method: "GET" });
-        let json = (await response.json())["active"];
-        for (let i = 0; i < json.length; i++) {
-            let folder = json[i];
-            $(`#item-${folder["name"].replaceAll(" ", "-").replaceAll(".", "-").replaceAll("(", "-").replaceAll(")", "-")} .details`)[0].innerText = `${folder["currentSize"]} / ${folder["totalSize"]} ${folder["percentage"]}%`;
+        if ($("#active-processes-section .list")[0].children.length != 0) {
+            let response = await fetch(`/api/process/active`, { method: "GET" });
+            let json = (await response.json());
+            Array.from(json["processes"]).forEach(folder => {
+                $(`#item-${folder["name"].replaceAll(" ", "-").replaceAll("?", "-").replaceAll("!", "-").replaceAll(".", "-").replaceAll("(", "-").replaceAll(")", "-")} .details`)[0].innerText = `${folder["currentSize"]} / ${folder["totalSize"]} - ${folder["percentage"]}%`;
+            })
         }
     }
 
@@ -56,6 +61,18 @@
                     data.append('path', folder["path"]);
                     await fetch('/api/process/active', { method: "POST", body: data })
                     setTimeout(() => PopulateActiveProcesses(), 1000)
+                    let populate = setInterval(() => {
+                        try {
+                            if ($("#active-processes-section .list")[0].children.length == 0) {
+                                console.log("Attempting to populate list");
+                                PopulateActiveProcesses();
+                            } else {
+                                clearInterval(populate);
+                            }
+                        } catch {
+
+                        }
+                    }, 1000)
                 }),
             ]))
         }
