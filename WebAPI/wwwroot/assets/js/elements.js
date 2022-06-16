@@ -19,7 +19,7 @@ function getToggle(element) {
 
 function makeFileItem(name, details) {
     let item = document.createElement('div')
-    item.id = `item-${name.replaceAll(" ", "-").replaceAll(".", "-").replaceAll("(", "-").replaceAll(")", "-")}`
+    item.id = `item-${name.replaceAll(" ", "-").replaceAll(".", "-").replaceAll("(", "-").replaceAll(")", "-").replaceAll("?", "-").replaceAll("!", "-")}`
     item.classList.add("file-item");
     let detailsSection = document.createElement('div')
     detailsSection.classList.add('detail-section');
