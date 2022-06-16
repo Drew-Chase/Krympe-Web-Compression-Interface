@@ -22,3 +22,22 @@
         $(".menu-item")[0].click()
     }
 }).call();
+
+function load(header) {
+    let page = document.createElement("div");
+    page.id = 'loading-page';
+    let head = document.createElement('div')
+    head.innerHTML = header;
+    let throbber = document.createElement('span')
+    throbber.classList.add('loading');
+
+    page.appendChild(head)
+    page.appendChild(throbber)
+    $("main")[0].appendChild(page);
+}
+
+function unload() {
+    if ($("#loading-page").length > 0) {
+        Array.from($("#loading-page")).forEach(e => e.remove())
+    }
+}
