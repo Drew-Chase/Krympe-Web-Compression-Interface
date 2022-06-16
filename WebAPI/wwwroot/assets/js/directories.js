@@ -1,4 +1,5 @@
 PopulateWatchDirectories()
+PopulateWatchedExtensionsList()
 async function PopulateWatchDirectories(cd = "") {
     let section = $("#watched-directories-section")[0];
     let list = section.querySelector(".list");
@@ -41,4 +42,19 @@ async function PopulateWatchDirectories(cd = "") {
             list.append(folder);
         }
     }
+}
+
+async function PopulateWatchedExtensionsList() {
+    let section = $("#watched-file-extensions")[0];
+    let list = section.querySelector('.list');
+    list.innerHTML = "";
+    let response = await fetch('/api/config');
+    let json = await response.json();
+    let extensions = json["extensions"];
+    Array.from(extensions).forEach(e => {
+        list.append(makeFolder(e, "", [
+            makeButton("Remove", "fas fa-minus", () => {
+            })
+        ]))
+    })
 }

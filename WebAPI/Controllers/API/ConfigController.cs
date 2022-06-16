@@ -21,7 +21,7 @@ public class ConfigController : ControllerBase
             overwrite = Configuration.Instance.OverwriteOriginal,
             temp_directory = Configuration.Instance.TempDirectory,
             ffmpeg = Configuration.Instance.FFMpeg_Command,
-            extensions = Configuration.Instance.Extensions.AsJson,
+            extensions = Configuration.Instance.Extensions.Get(),
         });
     }
 
@@ -43,6 +43,7 @@ public class ConfigController : ControllerBase
                 case "port_forward":
                     Configuration.Instance.PortForward = bool.Parse(value);
                     break;
+
                 case "overwrite":
                     Configuration.Instance.OverwriteOriginal = bool.Parse(value);
                     break;
@@ -54,6 +55,7 @@ public class ConfigController : ControllerBase
                 case "ffmpeg":
                     Configuration.Instance.FFMpeg_Command = value;
                     break;
+
                 case "extensions":
                     Configuration.Instance.Extensions = MediaExtensions.Make(value.Split(';'));
                     break;
