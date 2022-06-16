@@ -85,7 +85,7 @@ public class DriveUtil
                 }
             }
             log.Info("Done loading cached drive info");
-            log.Debug($"Process took {new TimeSpan(DateTime.Now.Ticks - startTime).ToString(@"hh\:mm\:ss")}");
+            log.Debug($"Process took {new TimeSpan(DateTime.Now.Ticks - startTime):hh\\:mm\\:ss}");
         }
         catch (Exception e)
         {
@@ -95,27 +95,30 @@ public class DriveUtil
             RefreshCachedDrives();
     }
 
-    public void RefreshCachedDrives()
+    public Task RefreshCachedDrives()
     {
-        try
+        return Task.Run(() =>
         {
-            log.Warn($"Refreshing Cached Drives");
-            log.Debug("This will take a moment!");
-            long startTime = DateTime.Now.Ticks;
-            _drives = new();
-            foreach (var drive in DriveInfo.GetDrives())
+            try
             {
-                _drives.Add(new DriveItem(drive.Name));
-            }
-            SaveCachedDrives();
+                log.Warn($"Refreshing Cached Drives");
+                log.Debug("This will take a moment!");
+                long startTime = DateTime.Now.Ticks;
+                _drives = new();
+                foreach (var drive in DriveInfo.GetDrives())
+                {
+                    _drives.Add(new DriveItem(drive.Name));
+                }
+                SaveCachedDrives();
 
-            log.Info("Done Refreshing Cached Drives");
-            log.Debug($"Process took {new TimeSpan(DateTime.Now.Ticks - startTime).ToString(@"hh\:mm\:ss")}");
-        }
-        catch (Exception e)
-        {
-            log.Error($"Unable to Refresh Cached Drvies: {e.Message}");
-        }
+                log.Info("Done Refreshing Cached Drives");
+                log.Debug($"Process took {new TimeSpan(DateTime.Now.Ticks - startTime):hh\\:mm\\:ss}");
+            }
+            catch (Exception e)
+            {
+                log.Error($"Unable to Refresh Cached Drvies: {e.Message}");
+            }
+        });
     }
 
     public void SaveCachedDrives()
