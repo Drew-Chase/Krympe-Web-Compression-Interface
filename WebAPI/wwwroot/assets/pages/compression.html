@@ -5,24 +5,25 @@
     </div>
     <div class="input-field" id="command-view">
         <p class="name">Command</p>
-        <input readonly type="text" id="ffmpeg-command" setting="ffmpeg">
+        <input title="ffmpeg command" readonly type="text" id="ffmpeg-command" setting="ffmpeg">
+        <p id="test-ffmpeg-command-btn" class="btn" title="Test Command"><i class="fa-solid fa-vial"></i></p>
     </div>
     <div class="list">
-        <div class="toggle-field" id="overwrite-exisitng-toggle" setting="overwrite">
+        <div class="toggle-field" id="overwrite-exisitng-toggle" setting="overwrite" title="If the compressed file should overwrite the original file">
             <p class="name">Overwrite Existing</p>
             <span class="toggle"></span>
         </div>
         <div class="input-field">
             <p class="name">Concurrent Processes</p>
-            <input type="number" id="concurrent-processes" setting="concurrent_processes">
+            <input type="number" id="concurrent-processes" setting="concurrent_processes" title="the max number of ffmpeg instances should run at the same time">
         </div>
         <div class="input-field">
             <p class="name info-bubble">Hardware Acceleration</p>
-            <input type="text" id="hardware-accel" value="auto" pre-cmd-arg="-hwaccel">
+            <input type="text" id="hardware-accel" value="auto" pre-cmd-arg="-hwaccel" title="if you don't know what this does, its best to leave it at auto">
         </div>
         <div class="input-field">
             <p class="name">Video Bitrate</p>
-            <input type="number" id="video-bitrate" value="0" cmd-arg="-b:v">
+            <input type="number" id="video-bitrate" value="0" cmd-arg="-b:v" title="0 is auto">
         </div>
         <div class="input-field">
             <p class="name">Video Codec</p>
@@ -30,7 +31,7 @@
         </div>
         <div class="input-field">
             <p class="name">Audio Bitrate</p>
-            <input type="number" id="video-bitrate" value="0" cmd-arg="-b:a">
+            <input type="number" id="video-bitrate" value="0" cmd-arg="-b:a" title="0 is auto">
         </div>
         <div class="input-field">
             <p class="name">Audio Codec</p>
