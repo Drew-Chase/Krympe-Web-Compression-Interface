@@ -67,6 +67,17 @@ public class WatchedDirectories
         return null;
     }
 
+    public FileItem[] GetFiles()
+    {
+        List<FileItem> items = new();
+        foreach (var dir in Get())
+        {
+            items.AddRange(FSUtil.GetFiles(dir));
+
+        }
+        return items.ToArray();
+    }
+
     public void Remove(string path)
     {
         if (Folders.Contains(path))
