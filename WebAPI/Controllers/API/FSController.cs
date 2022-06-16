@@ -45,6 +45,23 @@ public class FSController : ControllerBase
         }
     }
 
+    [HttpPost("refresh")]
+    public IActionResult Refresh()
+    {
+        try
+        {
+            DriveUtil.Instance.RefreshCachedDrives().Wait();
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new
+            {
+                message = e.Message
+            });
+        }
+    }
+
     [HttpDelete("watch")]
     public IActionResult RemoveWatched([FromForm] string path)
     {
