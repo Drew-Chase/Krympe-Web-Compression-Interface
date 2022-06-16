@@ -12,10 +12,15 @@
 }
 
 
-    .btn:hover {
+    .btn:not(.disabled):hover {
         cursor: pointer;
         filter: brightness(.9);
     }
+
+    .btn.disabled {
+        background-color: #a02424;
+    }
+
 
 .sm {
     min-width: 2rem;
