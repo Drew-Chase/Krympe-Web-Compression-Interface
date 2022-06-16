@@ -1,5 +1,27 @@
 PopulateWatchDirectories()
 PopulateWatchedExtensionsList()
+
+$("#refresh-list").on('click', async e => {
+    let button = e.currentTarget;
+    if (!button.classList.contains('disabled')) {
+        button.classList.add('disabled')
+        $("#watched-directories-section .list")[0].innerHTML = ""
+
+        load(`<h1>Refreshing Cached Drives:</h1><p>This will take a few minutes</p>`);
+
+        $(window).bind("beforeunload", e => {
+            return "You are currently trying to refresh cached drives\nAre you sure you want to leave?"
+        })
+        let response = await fetch('/api/fs/refresh', { method: "POST" });
+        if (response.ok) {
+            PopulateWatchDirectories();
+        }
+        unload();
+        button.classList.remove('disabled')
+        $(window).unbind("beforeunload")
+    }
+})
+
 async function PopulateWatchDirectories(cd = "") {
     let section = $("#watched-directories-section")[0];
     let list = section.querySelector(".list");
