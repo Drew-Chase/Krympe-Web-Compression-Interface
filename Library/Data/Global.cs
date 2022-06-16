@@ -17,6 +17,7 @@ public static class Global
     public static string FFmpegDirectory => Directory.CreateDirectory(Path.Combine(RootDirectory, "ffmpeg")).FullName;
     public static string LogsDirectory => Directory.CreateDirectory(Path.Combine(RootDirectory, "logs")).FullName;
     public static string RootDirectory => Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "LFInteractive", "Krympe")).FullName;
+    public static string TempDirectory => Configuration.Instance.TempDirectory;
     public static string UsersDirectory => Directory.CreateDirectory(Path.Combine(ConfigDirectory, "users")).FullName;
 
     #endregion Properties
