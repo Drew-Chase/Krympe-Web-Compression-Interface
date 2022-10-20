@@ -182,7 +182,6 @@
      * this as well.
      */
 
-
     if (prefix === 'fas') {
       defineIcons('fa', icons);
     }
@@ -657,7 +656,6 @@
     defineIcons('fab', icons);
     defineIcons('fa-brands', icons);
   });
-
 }());
 (function () {
   'use strict';
@@ -837,7 +835,6 @@
      * for `fas` so we'll ease the upgrade process for our users by automatically defining
      * this as well.
      */
-
 
     if (prefix === 'fas') {
       defineIcons('fa', icons);
@@ -1013,7 +1010,6 @@
     defineIcons('far', icons);
     defineIcons('fa-regular', icons);
   });
-
 }());
 (function () {
   'use strict';
@@ -1193,7 +1189,6 @@
      * for `fas` so we'll ease the upgrade process for our users by automatically defining
      * this as well.
      */
-
 
     if (prefix === 'fas') {
       defineIcons('fa', icons);
@@ -2592,7 +2587,6 @@
     defineIcons('fas', icons);
     defineIcons('fa-solid', icons);
   });
-
 }());
 (function () {
   'use strict';
@@ -3279,7 +3273,6 @@
    * @return {mixed}                 The final result.
    */
 
-
   var reduce = function fastReduceObject(subject, fn, initialValue, thisContext) {
     var keys = Object.keys(subject),
         length = keys.length,
@@ -3406,7 +3399,6 @@
      * for `fas` so we'll ease the upgrade process for our users by automatically defining
      * this as well.
      */
-
 
     if (prefix === 'fas') {
       defineIcons('fa', icons);
@@ -5098,7 +5090,6 @@
         } // Only convert the pseudo element in this ::before/::after position into an icon if we haven't
         // already done so with the same prefix and iconName
 
-
         if (iconName && !isSecondary && (!alreadyProcessedPseudoElement || alreadyProcessedPseudoElement.getAttribute(DATA_PREFIX) !== prefix || alreadyProcessedPseudoElement.getAttribute(DATA_ICON) !== iconIdentifier)) {
           node.setAttribute(pendingAttribute, iconIdentifier);
 
@@ -5589,5 +5580,4 @@
     mixoutsTo: api
   });
   bunker(bootstrap);
-
 }());

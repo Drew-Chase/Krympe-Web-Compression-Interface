@@ -13,100 +13,98 @@
     transition: background-color 200ms, max-height 500ms;
 }
 
-#nav-bar #title-bar {
+    #nav-bar #title-bar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100px;
+        margin: 0px 20px;
+    }
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100px;
-    margin: 0px 20px;
-}
+        #nav-bar #title-bar #title {
+            font-size: 3rem;
+            margin: 0;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+        }
 
-#nav-bar #title-bar #title {
-    font-size: 3rem;
-    margin: 0;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-}
+        #nav-bar #title-bar #menu-button {
+            font-size: 1.5rem;
+            margin: 0;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 180px;
+            background-color: transparent;
+            transition: background-color 200ms;
+        }
 
-#nav-bar #title-bar #menu-button {
-    font-size: 1.5rem;
-    margin: 0;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 180px;
-    background-color: transparent;
-    transition: background-color 200ms;
-}
+            #nav-bar #title-bar #menu-button:hover {
+                background-color: rgba(0, 0, 0, .3);
+            }
 
-#nav-bar #title-bar #menu-button:hover {
-    background-color: rgba(0, 0, 0, .3);
-}
+    #nav-bar.active {
+        max-height: 100vh;
+        background-color: var(--background);
+    }
 
+    #nav-bar #menu-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        min-height: 600px;
+        max-height: calc(100vh - 100px);
+        flex-direction: column;
+        overflow: auto;
+    }
 
-#nav-bar.active {
-    max-height: 100vh;
-    background-color: var(--background);
-}
+        #nav-bar #menu-items * {
+            transition: transform 500ms;
+        }
 
-#nav-bar #menu-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    min-height: 600px;
-    max-height: calc(100vh - 100px);
-    flex-direction: column;
-    overflow: auto;
-}
+        #nav-bar #menu-items .menu-item-row {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            min-height: 250px;
+        }
 
-#nav-bar #menu-items * {
-    transition: transform 500ms;
-}
+        #nav-bar #menu-items .menu-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            aspect-ratio: 1/1;
+            width: 25%;
+            max-width: 15rem;
+            min-width: 10rem;
+            margin: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 500ms, background-color 200ms;
+        }
 
-#nav-bar #menu-items .menu-item-row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    min-height: 250px;
-}
+    #nav-bar.active #menu-items .menu-item {
+        opacity: 1;
+    }
 
-#nav-bar #menu-items .menu-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    aspect-ratio: 1/1;
-    width: 25%;
-    max-width: 15rem;
-    min-width: 10rem;
-    margin: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 500ms, background-color 200ms;
-}
+    #nav-bar #menu-items .menu-item p {
+        margin: 1rem 0;
+    }
 
-#nav-bar.active #menu-items .menu-item {
-    opacity: 1;
-}
+    #nav-bar #menu-items .menu-item i {
+        font-size: 9rem;
+    }
 
-#nav-bar #menu-items .menu-item p {
-    margin: 1rem 0;
-}
-
-#nav-bar #menu-items .menu-item i {
-    font-size: 9rem;
-}
-
-#nav-bar #menu-items .menu-item:hover,
-.menu-item.active {
-    cursor: pointer;
-    background-color: var(--primary);
-}
+    #nav-bar #menu-items .menu-item:hover,
+    .menu-item.active {
+        cursor: pointer;
+        background-color: var(--primary);
+    }

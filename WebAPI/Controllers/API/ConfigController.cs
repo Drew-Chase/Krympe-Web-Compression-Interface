@@ -1,4 +1,5 @@
-﻿using Krympe.Library.Data;
+﻿// LFInteractive LLC. - All Rights Reserved
+using Krympe.Library.Data;
 using Krympe.Library.Objects;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,6 @@ public class ConfigController : ControllerBase
         return new JsonResult(new
         {
             web_port = Configuration.Instance.Port,
-            port_forward = Configuration.Instance.PortForward,
             concurrent_processes = Configuration.Instance.ConcurrentProcesses,
             overwrite = Configuration.Instance.OverwriteOriginal,
             temp_directory = Configuration.Instance.TempDirectory,
@@ -38,10 +38,6 @@ public class ConfigController : ControllerBase
 
                 case "concurrent_processes":
                     Configuration.Instance.ConcurrentProcesses = int.Parse(value);
-                    break;
-
-                case "port_forward":
-                    Configuration.Instance.PortForward = bool.Parse(value);
                     break;
 
                 case "overwrite":

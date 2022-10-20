@@ -182,7 +182,6 @@
      * this as well.
      */
 
-
     if (prefix === 'fas') {
       defineIcons('fa', icons);
     }
@@ -657,5 +656,4 @@
     defineIcons('fab', icons);
     defineIcons('fa-brands', icons);
   });
-
 }());

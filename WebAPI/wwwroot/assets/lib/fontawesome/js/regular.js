@@ -182,7 +182,6 @@
      * this as well.
      */
 
-
     if (prefix === 'fas') {
       defineIcons('fa', icons);
     }
@@ -357,5 +356,4 @@
     defineIcons('far', icons);
     defineIcons('fa-regular', icons);
   });
-
 }());

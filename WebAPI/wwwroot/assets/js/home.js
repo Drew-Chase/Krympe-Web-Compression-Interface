@@ -70,7 +70,6 @@
                                 clearInterval(populate);
                             }
                         } catch {
-
                         }
                     }, 1000)
                 }),

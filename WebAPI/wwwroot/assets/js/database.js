@@ -25,7 +25,6 @@ async function PopulateFailedCompress() {
     let list = section.querySelector(".list");
     list.innerHTML = ""
 
-
     let response = await fetch('/api/process/failed');
     let json = await response.json();
     let count = json["count"];
@@ -33,7 +32,6 @@ async function PopulateFailedCompress() {
     Array.from(json["processes"]).forEach(e => {
         list.append(makeFileItem(e["name"], `Reason: ${e["reason"]}`))
     })
-
 
     for (let i = 0; i < 0; i++) {
         list.append(makeFileItem(`File #${i}`, `Reason: Original File was smallest already!`))

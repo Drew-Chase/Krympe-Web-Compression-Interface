@@ -1,5 +1,5 @@
-﻿using ChaseLabs.CLConfiguration.List;
-using CLPortmapper;
+﻿// LFInteractive LLC. - All Rights Reserved
+using ChaseLabs.CLConfiguration.List;
 using Krympe.Library.Objects;
 using Newtonsoft.Json.Linq;
 
@@ -40,29 +40,6 @@ public class Configuration
     public string FFMpeg_Command { get => manager.GetConfigByKey("ffmpeg").Value; set => manager.GetConfigByKey("ffmpeg").Value = value; }
     public bool OverwriteOriginal { get => manager.GetConfigByKey("overwrite_original").Value; set => manager.GetConfigByKey("overwrite_original").Value = value; }
     public int Port { get => manager.GetConfigByKey("port").Value; set => manager.GetConfigByKey("port").Value = value; }
-
-    public bool PortForward
-    {
-        get => manager.GetConfigByKey("port_forward").Value;
-        set
-        {
-            try
-            {
-                if (value)
-                {
-                    PortHandler.OpenPort(Port);
-                }
-                else
-                {
-                    PortHandler.ClosePort(Port);
-                }
-            }
-            catch
-            {
-            }
-            manager.GetConfigByKey("port_forward").Value = value;
-        }
-    }
 
     public string TempDirectory
     {

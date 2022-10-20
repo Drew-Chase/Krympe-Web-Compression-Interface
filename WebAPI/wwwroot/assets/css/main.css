@@ -101,7 +101,6 @@ section {
     animation-duration: 700ms;
 }
 
-
 @keyframes loading {
     0% {
         transform: rotateZ(0deg);
@@ -115,7 +114,6 @@ section {
         transform: rotateZ(360deg);
     }
 }
-
 
 #loading-page {
     display: flex;

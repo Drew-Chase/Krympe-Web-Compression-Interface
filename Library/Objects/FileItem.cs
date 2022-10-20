@@ -26,13 +26,6 @@ public class FileItem
 
     #region Public Methods
 
-    public void Refresh()
-    {
-        Info = new(Path);
-        Name = Info.Name;
-
-        Size = Info.Length;
-    }
     protected FileItem(JObject obj)
     {
         Path = (string)obj["Path"];
@@ -44,6 +37,13 @@ public class FileItem
         return new(obj);
     }
 
+    public void Refresh()
+    {
+        Info = new(Path);
+        Name = Info.Name;
+
+        Size = Info.Length;
+    }
     public object ToObject()
     {
         return new
